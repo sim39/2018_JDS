@@ -75,7 +75,7 @@ m_ubed <- lmer(UBED_log_density ~ (1|FarmID) +
                data = wide_data_tsc)
 
 #LMM-III for TSC
-m_btm <- lme4::lmer( BTM_log_density ~ (1|FarmID) +
+m_btm <- lmer( BTM_log_density ~ (1|FarmID) +
                  typeOR +
                  # type/bedmat
                  typeOR.bedmatMS +
