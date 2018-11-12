@@ -1,5 +1,9 @@
 #filename: summary.R
 #
+#NOTE: Data for i) average SCC values (aveSCC) and ii) number of lactating cows 
+#(nolactcows) will not be shared until mid-2019 after
+#Godden et al. have submitted their manuscripts
+#
 #load packages
 library(dplyr)
 library(tidyr)
@@ -27,7 +31,7 @@ table2_region <- data_combined %>%
             herdsize_mean = mean(herd.size),
             kg_milkprod_mean = mean(milk.cow.year)*0.453592, #convert milk.cow.year from lbs to kg
             kg_milkprod_sd = sd(milk.cow.year)*0.453592, 
-            SCC_gm_mean = exp(mean(log(aveSCC), na.rm = TRUE)), #geometric mean
+            #SCC_gm_mean = exp(mean(log(aveSCC), na.rm = TRUE)), #geometric mean
             n_housing_FS = sum(lacthous=="FS"), #number farm samplings per housing type
             per_housing_FS = n_housing_FS/n_farmsamplings,
             n_housing_TS = sum(lacthous=="TS"),
@@ -57,7 +61,7 @@ table2_all <- data_combined %>%
             herdsize_mean = mean(herd.size),
             kg_milkprod_mean = mean(milk.cow.year)*0.453592, #convert milk.cow.year from lbs to kg
             kg_milkprod_sd = sd(milk.cow.year)*0.453592, 
-            SCC_gm_mean = exp(mean(log(aveSCC), na.rm = TRUE)), #geometric mean
+            #SCC_gm_mean = exp(mean(log(aveSCC), na.rm = TRUE)), #geometric mean
             n_housing_FS = sum(lacthous=="FS"), #number farm samplings per housing type
             per_housing_FS = n_housing_FS/n_farmsamplings,
             n_housing_TS = sum(lacthous=="TS"),
@@ -92,10 +96,10 @@ summarize_all <- data_combined %>%
             perbreed_H = sum(Breed=="H")/n_farmsamplings,
             perbreed_JorBS = sum(Breed=="J"|Breed=="BS")/n_farmsamplings,
             perbreed_NOT_HorJorBS = sum(Breed!="H"&Breed!="J"&Breed!="BS")/n_farmsamplings,
-            nolactcows_mean = mean(nolactcows),
-            nolactcows_min = min(nolactcows),
-            nolactcows_max = max(nolactcows),
-            nolactcows_median = median(nolactcows),
+            #nolactcows_mean = mean(nolactcows),
+            #nolactcows_min = min(nolactcows),
+            #nolactcows_max = max(nolactcows),
+            #nolactcows_median = median(nolactcows),
             kg_milkprod_mean = mean(milk.cow.year)*0.453592, #convert milk.cow.year from lbs to kg
             kg_milkprod_sd = sd(milk.cow.year)*0.453592, 
             kg_milkprod_min = min(milk.cow.year)*0.453592,
@@ -108,10 +112,10 @@ summarize_all <- data_combined %>%
             per_clnmas_mean = mean(per_clnmas),
             per_clnmas_sd = sd(per_clnmas),
             per_clnmas_min = min(per_clnmas),
-            per_clnmas_max = max(per_clnmas),
-            SCC_gm_mean = exp(mean(log(aveSCC), na.rm = TRUE))*1000, #geometric mean, x1000 to get cells/mL
-            SCC_min = min(aveSCC, na.rm = TRUE)*1000,
-            SCC_max = max(aveSCC, na.rm = TRUE)*1000)
+            per_clnmas_max = max(per_clnmas))
+            #SCC_gm_mean = exp(mean(log(aveSCC), na.rm = TRUE))*1000, #geometric mean, x1000 to get cells/mL
+            #SCC_min = min(aveSCC, na.rm = TRUE)*1000,
+            #SCC_max = max(aveSCC, na.rm = TRUE)*1000)
 
 #bedding material by housing
 summarize_byHousing <- data_combined %>%
